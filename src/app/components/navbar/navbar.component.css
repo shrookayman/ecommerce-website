@@ -1,0 +1,8 @@
+.name{
+    font-weight: bolder;
+    font-size: 25px;
+}
+.cart-icon{
+   font-size: 23px;
+   color: var(--main-color);
+}

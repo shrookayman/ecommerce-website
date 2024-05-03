@@ -1,1 +1,22 @@
-<p>register works!</p>
+<div class="w-75 mx-auto py-4">
+    <h4>Register Now:</h4>
+    <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
+        <label for="name">Name</label>
+        <input formControlName="name" type="text" class="form-control mb-2" id="name">
+        <div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="alert  alert-danger">
+            <p *ngIf="registerForm.get('name')?.getError('required')" class="m-0">Name is required</p>
+            <p *ngIf="registerForm.get('name')?.getError('minlength')" class="m-0">Name min length is 3</p>
+            <p *ngIf="registerForm.get('name')?.getError('maxlength')" class="m-0">Name max length is 50</p>
+        </div>
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" class="form-control mb-2" id="email">
+        <label for="password">Password</label>
+        <input formControlName="password" type="password" class="form-control mb-2" id="password">
+        <label for="rePassword">Re-Password</label>
+        <input formControlName="password" type="password" class="form-control mb-2" id="rePassword">
+        <label for="phone">Phone</label>
+        <input formControlName="phone" type="phone" class="form-control mb-2" id="name">
+        <button  [disabled]="registerForm.invalid" class="btn button" type="submit">Submit</button>
+    </form>
+
+</div>

@@ -8,6 +8,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BrandsComponent } from './components/brands/brands.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {path:'' ,redirectTo:'home' ,pathMatch:'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'categories' ,component: CategoriesComponent},
   {path:'cart' ,component: CartComponent},
   {path:'brands' ,component: BrandsComponent},
+  {path:'products' ,component: ProductsComponent},
   {path:'**' ,component: NotfoundComponent}
 
 ];
