@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@300&family=Nunito:wght@700&family=Open+Sans:wght@300&display=swap');
+
 :root{
     --main-color:#0aad0a;
     --light-color:#f0f3f2;
@@ -23,7 +24,7 @@ a, a:hover {
 
 .product:hover{
    box-shadow: var(--shadow);
-   border: solid 1px var(--main-color);
+   border: solid 1px rgb(206, 203, 203);
 }
 .product .btn{
     transition: transform 1s, opacity 1s;

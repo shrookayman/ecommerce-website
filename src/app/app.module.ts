@@ -16,6 +16,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ReactiveFormsModule } from '@angular/forms';
  import {HttpClientModule}  from '@angular/common/http';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MainsliderComponent } from './components/mainslider/mainslider.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     NotfoundComponent,
     NavbarComponent,
     FooterComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductDetailsComponent,
+    MainsliderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule
+
     
   ],
   providers: [],

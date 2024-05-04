@@ -9,6 +9,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { CartComponent } from './components/cart/cart.component';
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 const routes: Routes = [
   {path:'' ,redirectTo:'home' ,pathMatch:'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'cart' ,component: CartComponent},
   {path:'brands' ,component: BrandsComponent},
   {path:'products' ,component: ProductsComponent},
+  {path:'productDetails/:id' ,component: ProductDetailsComponent},
   {path:'**' ,component: NotfoundComponent}
 
 ];
