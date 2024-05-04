@@ -22,7 +22,7 @@
              
           
              <div class="d-flex align-items-center justify-content-between">
-                <span class="text-muted  font-sm">{{productDetails?.price}} EGP</span>
+                <span class="text-muted  font-sm">{{productDetails?.price | currency : 'EGP'}} </span>
                 <div>
                     <span class="text-muted  font-sm">{{productDetails?.ratingsAverage}}</span>
                     <i class="fas fa-star rating-color"></i>

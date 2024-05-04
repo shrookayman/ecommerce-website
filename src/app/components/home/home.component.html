@@ -1,8 +1,14 @@
 
 <app-mainslider></app-mainslider>
+
+<app-categoriesslider></app-categoriesslider>
 <div class="row">
       
-    <div *ngFor="let product of products"  class="col-md-2">
+
+    <div>
+        <input [(ngModel)]="searchTerm" type="text" placeholder="search by name " class="form-control w-100 my-2">
+    </div>
+    <div *ngFor="let product of products|search: searchTerm "  class="col-md-2">
        <div class="product px-2 py-4">
         <a [routerLink]="['/productDetails' , product._id]" >
           <img class="w-100" src={{product.imageCover}} alt="">
@@ -10,7 +16,7 @@
 
           <h2 class="h6 fw-bold">{{product.title.split(' ').slice(0,2).join(' ')}}</h2>
           <div class="d-flex align-items-center justify-content-between">
-            <span class="text-muted  font-sm">{{product.price}} EGP</span>
+            <span class="text-muted  font-sm">{{product.price | currency : 'EGP'}} </span>
             <div>
                 <span class="text-muted  font-sm">{{product.ratingsAverage}}</span>
                 <i class="fas fa-star rating-color"></i>
