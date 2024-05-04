@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup , FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -8,6 +10,9 @@ import { FormGroup , FormControl, Validators} from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  isLoading:boolean = false;
+  apiError: string = '';
+  constructor(private _AuthService : AuthService , private _Router : Router){}
      registerForm: FormGroup = new FormGroup({
         name: new FormControl(null , [Validators.required , Validators.minLength(3) , Validators.maxLength(50)]),
         email: new FormControl(null , [ Validators.required , Validators.email]),
@@ -18,6 +23,22 @@ export class RegisterComponent {
 
 
      handleRegister(registerForm:FormGroup){
-      console.log(registerForm)
+      this.isLoading = true;
+      if(registerForm.valid){
+        console.log(registerForm.value);
+        this._AuthService.register(registerForm.value).subscribe({
+          next:(response)=> {
+            this.isLoading = false;
+            this._Router.navigate(['/login'])
+          },
+          error:(err)=> {
+            this.isLoading = false;
+            this.apiError = err.error.errors.msg ;
+            
+          },
+
+    });
+      }
+         
      }
 }

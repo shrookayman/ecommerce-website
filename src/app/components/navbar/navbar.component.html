@@ -9,19 +9,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-          <li class="nav-item">
+          <li  class="nav-item">
             <a class="nav-link" routerLink="home">Home</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isLogin" class="nav-item">
             <a class="nav-link" routerLink="cart">Cart</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isLogin" class="nav-item">
             <a class="nav-link" routerLink="products">Products</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isLogin" class="nav-item">
             <a class="nav-link" routerLink="categories">Categories</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isLogin" class="nav-item">
             <a class="nav-link" routerLink="brands">Brands</a>
           </li>
         </ul>
@@ -35,21 +35,14 @@
             <li class="nav-item "><i class="fab mx-2 fa-linkedin"></i></li>
             <li class="nav-item "><i class="fab mx-2 fa-youtube"></i></li>
 
-
-
-
-             
-
-            
-
-            <li class="nav-item">
+            <li *ngIf="!isLogin" class="nav-item">
               <a class="nav-link" routerLink="login">Login</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="!isLogin" class="nav-item">
               <a class="nav-link" routerLink="register">Register</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" >Logout</a>
+            <li *ngIf="isLogin" class="nav-item">
+              <a class="nav-link cursor-pointer" (click)="logout()">Logout</a>
             </li>
           </ul>
        

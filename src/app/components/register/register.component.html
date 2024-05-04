@@ -1,5 +1,8 @@
 <div class="w-75 mx-auto py-4">
     <h4>Register Now:</h4>
+    <!-- <div *ngIf="apiError" class="alert alert-danger">
+        <p>{{apiError}}</p>
+    </div> -->
     <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
         <label for="name">Name</label>
         <input formControlName="name" type="text" class="form-control mb-2" id="name">
@@ -10,13 +13,29 @@
         </div>
         <label for="email">Email</label>
         <input formControlName="email" type="email" class="form-control mb-2" id="email">
+        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert  alert-danger">
+            <p *ngIf="registerForm.get('email')?.getError('required')" class="m-0">email is required</p>
+            <p *ngIf="registerForm.get('email')?.getError('email')" class="m-0">Email is invalid</p>
+        </div>
+
         <label for="password">Password</label>
         <input formControlName="password" type="password" class="form-control mb-2" id="password">
+        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="alert  alert-danger">
+            <p *ngIf="registerForm.get('password')?.getError('required')" class="m-0">Password is required</p>
+            <p *ngIf="registerForm.get('password')?.getError('password')" class="m-0">Password is invalid</p>
+        </div>
         <label for="rePassword">Re-Password</label>
-        <input formControlName="password" type="password" class="form-control mb-2" id="rePassword">
+        <input formControlName="rePassword" type="password" class="form-control mb-2" id="rePassword">
+        <div *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched" class="alert  alert-danger">
+            <p *ngIf="registerForm.get('rePassword')?.getError('required')" class="m-0">Password is required</p>
+            <p *ngIf="registerForm.get('rePassword')?.getError('rePassword')" class="m-0">Password is invalid</p>
+        </div>
         <label for="phone">Phone</label>
-        <input formControlName="phone" type="phone" class="form-control mb-2" id="name">
-        <button  [disabled]="registerForm.invalid" class="btn button" type="submit">Submit</button>
+        <input formControlName="phone" type="phone" class="form-control mb-2" id="phone">
+        <button  [disabled]="registerForm.invalid" class="btn button" type="submit">
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+          <span *ngIf="!isLoading">Submit</span>
+        </button>
     </form>
 
 </div>
