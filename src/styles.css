@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@300&family=Nunito:wght@700&family=Open+Sans:wght@300&display=swap');
 
 :root{
-    --main-color:#0aad0a;
+    --main-color:#845fa1;
     --light-color:#f0f3f2;
     --font-family: 'Encode Sans Expanded','sans-serif';
     --rating-color:#ffc908;
-    --shadow :rgba(145,158,171,.2) 10px 2px 4px -1px;
+    --shadow :rgba(149, 104, 179, 0.2) 10px 2px 4px -1px;
 }
 .body{
    font-family: var(--font-family) !important;
@@ -17,14 +17,21 @@
 .cursor-pointer{
     cursor: pointer;
 }
-a, a:hover {
+a {
    color: black;
    text-decoration: none;
 }
+.nav-link:hover {
+    color: white ;
+    text-decoration: none;
+    background-color: var(--main-color);
+    border-radius: 10px;
+ }
 
 .product:hover{
    box-shadow: var(--shadow);
-   border: solid 1px rgb(206, 203, 203);
+   border: solid 1px var(--main-color);
+   border-radius: 10px;
 }
 .product .btn{
     transition: transform 1s, opacity 1s;
@@ -55,6 +62,7 @@ a, a:hover {
     color: aliceblue !important;
 
 }
+
 
 
 

@@ -1,1 +1,18 @@
-<p>brands works!</p>
+<div class="row">
+  <div class="my-2">
+    <h3 >Our Brands</h3>
+  </div>
+ 
+    <div *ngFor="let product of brands "  class="col-md-2">
+       <div class="product px-2 py-4">
+          <img class="w-100" src={{product.image}} alt="">
+
+          <h2 class="h6 fw-bold">{{product.name}}</h2>
+          <div class="d-flex align-items-center justify-content-between">
+          
+          </div>
+
+
+       </div>
+    </div>
+</div>

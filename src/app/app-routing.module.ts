@@ -10,19 +10,20 @@ import { CartComponent } from './components/cart/cart.component';
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  {path:'' ,redirectTo:'home' ,pathMatch:'full'},
-  {path:'home' ,component: HomeComponent},
-  {path:'about' ,component: AboutComponent},
-  {path:'login' ,component: LoginComponent},
-  {path:'register' ,component: RegisterComponent},
-  {path:'categories' ,component: CategoriesComponent},
-  {path:'cart' ,component: CartComponent},
-  {path:'brands' ,component: BrandsComponent},
-  {path:'products' ,component: ProductsComponent},
-  {path:'productDetails/:id' ,component: ProductDetailsComponent},
-  {path:'**' ,component: NotfoundComponent}
+  {path:'' ,redirectTo:'register' ,pathMatch:'full'},
+  {path:'home' ,component: HomeComponent , canActivate: [AuthGuard]},
+  {path:'about' ,component: AboutComponent , canActivate: [AuthGuard]},
+  {path:'login' ,component: LoginComponent },
+  {path:'register' ,component: RegisterComponent },
+  {path:'categories' ,component: CategoriesComponent, canActivate: [AuthGuard]},
+  {path:'cart' ,component: CartComponent, canActivate: [AuthGuard]},
+  {path:'brands' ,component: BrandsComponent, canActivate: [AuthGuard]},
+  {path:'products' ,component: ProductsComponent, canActivate: [AuthGuard]},
+  {path:'productDetails/:id' ,component: ProductDetailsComponent, canActivate: [AuthGuard]},
+  {path:'**' ,component: NotfoundComponent, canActivate: [AuthGuard]}
 
 ];
 

@@ -8,9 +8,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  userData = new BehaviorSubject(null);
+  private isUserAuthenticated = false;
 
-  constructor(private _HttpClient : HttpClient , private _Router : Router) { }
-   userData = new BehaviorSubject(null);
+  constructor(private _HttpClient : HttpClient , private _Router : Router) {
+     
+    if(localStorage.getItem('userToken') != null){ // guard
+         this.saveUserData();
+    }
+   }
+
 
   saveUserData(){
     let encodeUserData = JSON.stringify(localStorage.getItem('userToken'));
@@ -25,11 +32,17 @@ export class AuthService {
       return this._HttpClient.post( `https://route-ecommerce.onrender.com/api/v1/auth/signin`, formData);
     }
 
-
     logout(){
       localStorage.removeItem('userToken');
       this.userData.next(null);
       this._Router.navigate(['/login']);
     }
+    
+  isAuthenticated() {
+    return this.isUserAuthenticated;
+  }
+
+
+    
   
 }
