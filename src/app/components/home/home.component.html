@@ -1,6 +1,10 @@
+
+<app-mainslider></app-mainslider>
 <div class="row">
+      
     <div *ngFor="let product of products"  class="col-md-2">
        <div class="product px-2 py-4">
+        <a [routerLink]="['/productDetails' , product._id]" >
           <img class="w-100" src={{product.imageCover}} alt="">
           <span class="text-main fw-bold font-sm">{{product.category.name}}</span>
 
@@ -14,7 +18,7 @@
           </div>
 
           <button class="btn text-white bg-main w-100"> + Add</button>
-        
+        </a>
 
        </div>
     </div>
