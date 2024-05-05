@@ -13,13 +13,13 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  {path:'' ,redirectTo:'register' ,pathMatch:'full'},
+  {path:'' ,redirectTo:'home' ,pathMatch:'full'},
   {path:'home' ,component: HomeComponent , canActivate: [AuthGuard]},
   {path:'about' ,component: AboutComponent , canActivate: [AuthGuard]},
   {path:'login' ,component: LoginComponent },
   {path:'register' ,component: RegisterComponent },
   {path:'categories' ,component: CategoriesComponent, canActivate: [AuthGuard]},
-  {path:'cart' ,component: CartComponent, canActivate: [AuthGuard]},
+  {path:'productDetails/:id/cart' ,component: CartComponent, canActivate: [AuthGuard]},
   {path:'brands' ,component: BrandsComponent, canActivate: [AuthGuard]},
   {path:'products' ,component: ProductsComponent, canActivate: [AuthGuard]},
   {path:'productDetails/:id' ,component: ProductDetailsComponent, canActivate: [AuthGuard]},
