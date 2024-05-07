@@ -1,27 +1,39 @@
 
+<h3>My Cart</h3>
 
-<div class="row py-4 align-items-center my-3 cart">
-    <div class="col-md-3">     
-            
+<div class="row py-4 align-items-center my-3 cart" *ngFor="let product of productDetails.products">
 
-        <img [src]="productDetails.imageCover" class="w-100" alt="">
+    <div class="col-md-2">     
+        <img [src]="product?.product?.imageCover" alt="" class="w-100">
+    </div>
+    <div class="col-md-10 px-5  d-flex justify-content-between">
+        <div>
+            <h3 class="py-4 fw-bolder">{{product?.product?.title}} </h3>
+            <p class="test-muted">Price : {{product?.price | currency : 'EGP'}}</p>   
+            <button class="btn m-0 p-2 " (click)="removeItem(product?.product?._id)"> <i class="fa-regular fa-trash-can text-main"></i> Remove</button>
+        </div>
+        <div>
+            <button (click)="updateItemCount(product?.product?._id , product?.count+1)" class="btn main-button">+</button>
+            <span class="mx-2"> {{product?.count}}</span>
+            <button (click)="updateItemCount(product?.product?._id , product?.count-1)" class="btn main-button">-</button>
+
+        </div>
+         
+         
 
     </div>
-    <div class="col-md-8 px-5 overview">
-         <h2 class="py-4 fw-bolder">{{productDetails?.title}} </h2>
-         <p class="test-muted?">{{productDetails?.description}}</p>
-         <div class="d-flex align-items-center justify-content-between">
-            <span class="text-muted  font-sm">{{productDetails?.price | currency : 'EGP'}} </span>
-            <!-- <div>
-                <span class="text-muted  font-sm">{{productDetails?.ratingsAverage}}</span>
-                <i class="fas fa-star rating-color"></i>
-            </div> -->
-          </div>
-          <a routerLink="">
-            <button class="btn text-white bg-main w-100 my-4"> Checkout</button>
 
-           </a>
 
-    </div>
+             
 </div>
+
+<div class="my-2">
+    <p>Total Price : {{productDetails?.totalCartPrice}}</p>
+</div>
+<a routerLink="">
+    <button class="btn text-white bg-main w-100 my-4"> Checkout</button>
+
+   </a>
+
+
 

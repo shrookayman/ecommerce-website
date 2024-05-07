@@ -15,6 +15,7 @@ export class AuthService {
      
     if(localStorage.getItem('userToken') != null){ // guard
          this.saveUserData();
+         console.log(localStorage.getItem('userToken'));
     }
    }
 

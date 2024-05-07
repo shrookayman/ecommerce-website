@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'login' ,component: LoginComponent },
   {path:'register' ,component: RegisterComponent },
   {path:'categories' ,component: CategoriesComponent, canActivate: [AuthGuard]},
-  {path:'productDetails/:id/cart' ,component: CartComponent, canActivate: [AuthGuard]},
+  {path:'cart' ,component: CartComponent, canActivate: [AuthGuard]},
   {path:'brands' ,component: BrandsComponent, canActivate: [AuthGuard]},
   {path:'products' ,component: ProductsComponent, canActivate: [AuthGuard]},
   {path:'productDetails/:id' ,component: ProductDetailsComponent, canActivate: [AuthGuard]},

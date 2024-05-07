@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from 'src/app/services/products.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,20 +9,41 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private _ActivatedRoute: ActivatedRoute , private _ProductsService : ProductsService){}
+  constructor( private _CartService : CartService){}
 
-  productId : any ;
+  // productId : any ;
   productDetails: any = [];
-  ngOnInit(): void {
-    this._ActivatedRoute.paramMap.subscribe({
-      next:(param)=>{
-        this.productId = param.get('id');
-        console.log(this.productId);
-      }
-    });
-    this._ProductsService.getProductsDetails(this.productId).subscribe({
-      next: (response)=> this.productDetails = response.data
-    })
+  removeItem(productId :string){
+    this._CartService.removeItem(productId).subscribe({
+      next:(response)=> {
+        this.productDetails = response ,
+        console.log(response)
+      },
+      error:(err)=> console.log(err)
+     })
   }
+
+
+  updateItemCount(productId :string , count : number){
+    this._CartService.updateItemCount(productId , count).subscribe({
+      next:(response)=> {
+        this.productDetails = response.data ,
+        console.log(response)
+      },
+      error:(err)=> console.log(err)
+     })
+  }
+  
+  ngOnInit(): void {
+     this._CartService.getLoggedUserCart().subscribe({
+      next:(response)=> {
+        this.productDetails = response.data,
+        console.log(response.data)
+      },
+      error:(err)=> console.log(err)
+     })
+  }
+
+ 
 
 }
